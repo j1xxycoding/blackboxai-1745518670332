@@ -56,7 +56,7 @@ $recent_orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-logo">
-                <img src="https://jaxxy.space/botop/logolynce.png" alt="LYNCE Logo">
+                <img src="https://jaxxy.space/botop/Lynce_10%20cm%20w.png" alt="LYNCE Logo">
             </div>
             <ul class="sidebar-menu">
                 <li><a href="dashboard.php" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
