@@ -21,20 +21,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         $stmt->execute([$product_id]);
         $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Delete product
-        $stmt = $db->prepare("DELETE FROM products WHERE id = ?");
-        if ($stmt->execute([$product_id])) {
-            // Delete product image
-            if ($product && $product['image']) {
-                $image_path = UPLOAD_PATH . $product['image'];
-                if (file_exists($image_path)) {
-                    unlink($image_path);
-                }
+// Check for existing orders referencing the product
+$stmtCheck = $db->prepare("SELECT COUNT(*) as count FROM orders WHERE product_id = ?");
+$stmtCheck->execute([$product_id]);
+$orderCount = $stmtCheck->fetch(PDO::FETCH_ASSOC)['count'];
+
+if ($orderCount > 0) {
+    set_flash_message('error', 'Cannot delete product. There are existing orders for this product.');
+} else {
+    // Delete product
+    $stmt = $db->prepare("DELETE FROM products WHERE id = ?");
+    if ($stmt->execute([$product_id])) {
+        // Delete product image
+        if ($product && $product['image']) {
+            $image_path = UPLOAD_PATH . $product['image'];
+            if (file_exists($image_path)) {
+                unlink($image_path);
             }
-            set_flash_message('success', 'Product deleted successfully.');
-        } else {
-            set_flash_message('error', 'Failed to delete product.');
         }
+        set_flash_message('success', 'Product deleted successfully.');
+    } else {
+        set_flash_message('error', 'Failed to delete product.');
+    }
+}
     }
     redirect('list.php');
 }
