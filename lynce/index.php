@@ -20,6 +20,7 @@ $featured_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>LYNCE - Modern Fashion Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/admin.js" defer></script>
 </head>
 <body>
     <!-- Header -->
@@ -29,6 +30,9 @@ $featured_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <a href="index.php">
                     <img src="https://jaxxy.space/botop/logolynce.png" alt="LYNCE Logo" style="max-height: 40px;">
                 </a>
+            </div>
+            <div class="cart-link" style="margin-right: 1rem;">
+                <a href="cart.php" class="btn btn-primary">Cart</a>
             </div>
         </nav>
     </header>
@@ -49,12 +53,14 @@ $featured_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <!-- Featured Products -->
     <section class="products">
         <h2>Featured Collections</h2>
-        <div class="products-grid">
+        <div class="products-grid" id="featured">
             <?php foreach ($featured_products as $product): ?>
             <div class="product-card">
-                <img src="<?php echo UPLOAD_URL . htmlspecialchars($product['image']); ?>" 
-                     alt="<?php echo htmlspecialchars($product['name']); ?>" 
-                     class="product-image">
+                <div class="product-image-container">
+                    <img src="<?php echo UPLOAD_URL . htmlspecialchars($product['image']); ?>" 
+                         alt="<?php echo htmlspecialchars($product['name']); ?>" 
+                         class="product-image">
+                </div>
                 <div class="product-info">
                     <h3 class="product-title"><?php echo htmlspecialchars($product['name']); ?></h3>
                     <p class="product-size">Size: <?php echo htmlspecialchars($product['size']); ?></p>
