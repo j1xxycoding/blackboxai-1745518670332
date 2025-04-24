@@ -42,7 +42,7 @@ $featured_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <!-- Hero Section -->
     <section class="hero modern-hero">
         <div class="hero-content">
-            <img src="https://jaxxy.space/botop/whitelynce.png" alt="LYNCE Logo White" class="hero-logo">
+            <img src="https://jaxxy.space/botop/Lynce_10%20cm%20w.png" alt="LYNCE Logo White" class="hero-logo">
             <p class="hero-subtitle">Discover the elegance of modern fashion</p>
             <a href="#featured" class="btn btn-primary hero-cta">Shop Now</a>
         </div>
