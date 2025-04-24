@@ -80,30 +80,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             <?php endif; ?>
 
-            <div class="product-content">
-                <div class="product-image">
-                    <img src="<?php echo UPLOAD_URL . htmlspecialchars($product['image']); ?>" 
-                         alt="<?php echo htmlspecialchars($product['name']); ?>">
-                </div>
-                <div class="product-info">
-                    <h1><?php echo htmlspecialchars($product['name']); ?></h1>
-                    <p class="product-size">Size: <?php echo htmlspecialchars($product['size']); ?></p>
-                    <p class="product-price">$<?php echo format_price($product['price']); ?></p>
-                    <p class="product-description"><?php echo nl2br(htmlspecialchars($product['description'])); ?></p>
-                    
-                    <!-- Add to Cart Form -->
-                    <form method="POST" action="../cart.php" class="order-form">
-                        <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+                <div class="product-content">
+                    <div class="product-image-container">
+                        <img src="<?php echo UPLOAD_URL . htmlspecialchars($product['image']); ?>" 
+                             alt="<?php echo htmlspecialchars($product['name']); ?>" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <h1><?php echo htmlspecialchars($product['name']); ?></h1>
+                        <p class="product-size">Size: <?php echo htmlspecialchars($product['size']); ?></p>
+                        <p class="product-price">$<?php echo format_price($product['price']); ?></p>
+                        <p class="product-description"><?php echo nl2br(htmlspecialchars($product['description'])); ?></p>
                         
-                        <div class="form-group">
-                            <label for="quantity" class="form-label">Quantity</label>
-                            <input type="number" id="quantity" name="quantity" class="form-input" value="1" min="1" required>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Add to Cart</button>
-                    </form>
+                        <!-- Add to Cart Form -->
+                        <form method="POST" action="../cart.php" class="order-form">
+                            <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+                             
+                            <div class="form-group">
+                                <label for="quantity" class="form-label">Quantity</label>
+                                <input type="number" id="quantity" name="quantity" class="form-input" value="1" min="1" required>
+                            </div>
+    
+                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
         </div>
     </div>
 
