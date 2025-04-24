@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <nav class="nav">
             <div class="logo">
                 <a href="../index.php">
-                    <img src="https://jaxxy.space/botop/logolynce.png" alt="LYNCE Logo">
+                    <img src="https://jaxxy.space/botop/logolynce.png" alt="LYNCE Logo" class="product-logo">
                 </a>
             </div>
         </nav>
@@ -91,26 +91,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <p class="product-price">$<?php echo format_price($product['price']); ?></p>
                     <p class="product-description"><?php echo nl2br(htmlspecialchars($product['description'])); ?></p>
                     
-                    <!-- Order Form -->
-                    <form method="POST" class="order-form">
-                        <input type="hidden" name="csrf_token" value="<?php echo generate_csrf_token(); ?>">
+                    <!-- Add to Cart Form -->
+                    <form method="POST" action="../cart.php" class="order-form">
+                        <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
                         
                         <div class="form-group">
-                            <label for="customer_name" class="form-label">Your Name</label>
-                            <input type="text" id="customer_name" name="customer_name" class="form-input" required>
+                            <label for="quantity" class="form-label">Quantity</label>
+                            <input type="number" id="quantity" name="quantity" class="form-input" value="1" min="1" required>
                         </div>
 
-                        <div class="form-group">
-                            <label for="phone" class="form-label">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" class="form-input" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="address" class="form-label">Delivery Address</label>
-                            <textarea id="address" name="address" class="form-input" rows="3" required></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Order Now</button>
+                        <button type="submit" class="btn btn-primary">Add to Cart</button>
                     </form>
                 </div>
             </div>
