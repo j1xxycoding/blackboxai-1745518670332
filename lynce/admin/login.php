@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="login-container">
         <div class="login-logo">
-            <img src="https://jaxxy.space/botop/logolynce.png" alt="LYNCE Logo">
+            <img src="https://jaxxy.space/botop/Lynce_10%20cm%20w.png" alt="LYNCE Logo">
         </div>
 
         <?php if (isset($error)): ?>
